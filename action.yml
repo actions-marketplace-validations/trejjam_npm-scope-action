@@ -1,0 +1,21 @@
+name: "Configure NPM Scope Action"
+description: "Github Action to set scope in a .npmrc file"
+inputs:
+  accessToken:
+    description: "Your access token for the scope"
+    required: true
+  organization:
+    description: "Scope name / organization"
+    required: true
+  feed:
+    description: "Scope feed"
+    required: true
+  username:
+    description: "Your username"
+    required: false
+  email:
+    description: "Your email"
+    required: false
+runs:
+  using: "node12"
+  main: "dist/index.js"
