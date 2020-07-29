@@ -1,0 +1,17 @@
+{
+  "name": "npm-scope-action",
+  "version": "1.0.0",
+  "description": "Github Action to set scope in a .npmrc file",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Jan Trejbal",
+  "scripts": {
+    "build": "ncc build index.js"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.0"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3"
+  }
+}
