@@ -79,6 +79,17 @@ async function run() {
 
         const filePath = core.getInput('npmrcPath');
 
+        core.info(`Write to: ${filePath}`);
+        if (core.isDebug()) {
+            core.debug(`AccessToken: ${accessToken}`);
+        }
+        core.info(`Organization: ${organization}`);
+        if (core.isDebug()) {
+            core.debug(`Organization: ${feed}`);
+        }
+        core.info(`Username: ${username}`);
+        core.info(`Email: ${email}`);
+
         if (username === undefined || username === '') {
             username = organization;
         }
@@ -98,6 +109,11 @@ async function run() {
         fs.writeFile(filePath, authTokenConfiguration, error => {
             if (error) {
                 core.setFailed(error.message);
+            }
+
+            core.info('.npmrc configured');
+            if (core.isDebug()) {
+                core.debug(`.nmprc content: ${authTokenConfiguration}`);
             }
         })
 
