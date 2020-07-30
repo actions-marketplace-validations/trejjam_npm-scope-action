@@ -42,6 +42,8 @@ module.exports =
 /******/ 		// Load entry module and return exports
 /******/ 		return __webpack_require__(104);
 /******/ 	};
+/******/ 	// initialize runtime
+/******/ 	runtime(__webpack_require__);
 /******/
 /******/ 	// run startup
 /******/ 	return startup();
@@ -57,8 +59,10 @@ module.exports = require("os");
 /***/ }),
 
 /***/ 104:
-/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
+/***/ (function(__unusedmodule, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 const fs = __webpack_require__(747);
 const core = __webpack_require__(470);
 
@@ -73,12 +77,10 @@ async function run() {
         let username = core.getInput('username');
         let email = core.getInput('email');
 
+        const filePath = core.getInput('npmrcPath');
+
         if (username === undefined || username === '') {
             username = organization;
-        }
-
-        if (email === undefined || email === '') {
-            email = 'npm requires email to be set but doesn\'t use the value';
         }
 
         const authTokenConfiguration = `
@@ -92,8 +94,6 @@ async function run() {
 ; end auth token  
 `;
 
-        const filePath = '.npmrc';
-
         // TODO append to a file if exists
         fs.writeFile(filePath, authTokenConfiguration, error => {
             if (error) {
@@ -106,7 +106,7 @@ async function run() {
     }
 }
 
-run();
+/* harmony default export */ __webpack_exports__["default"] = (run);
 
 
 /***/ }),
@@ -453,4 +453,20 @@ module.exports = require("fs");
 
 /***/ })
 
-/******/ });
+/******/ },
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ 	"use strict";
+/******/ 
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ }
+);
