@@ -1,5 +1,8 @@
 name: "Configure NPM Scope Action"
 description: "Github Action to set scope in a .npmrc file"
+branding:
+  icon: link
+  color: gray-dark
 inputs:
   accessToken:
     description: "Your access token for the scope"
