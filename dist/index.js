@@ -71,6 +71,7 @@ async function run() {
         const accessToken = core.getInput('accessToken');
         core.setSecret(accessToken);
 
+        const server = core.getInput('server');
         const organization = core.getInput('organization');
         const feed = core.getInput('feed');
         core.setSecret(feed);
@@ -100,12 +101,12 @@ async function run() {
 
         const authTokenConfiguration = `
 ; begin auth token
-//pkgs.dev.azure.com/${organization}/_packaging/${feed}/npm/registry/:username=${username}
-//pkgs.dev.azure.com/${organization}/_packaging/${feed}/npm/registry/:_password=${accessToken}
-//pkgs.dev.azure.com/${organization}/_packaging/${feed}/npm/registry/:email=${email}
-//pkgs.dev.azure.com/${organization}/_packaging/${feed}/npm/:username=${username}
-//pkgs.dev.azure.com/${organization}/_packaging/${feed}/npm/:_password=${accessToken}
-//pkgs.dev.azure.com/${organization}/_packaging/${feed}/npm/:email=${email}
+//${server}/${organization}/_packaging/${feed}/npm/registry/:username=${username}
+//${server}/${organization}/_packaging/${feed}/npm/registry/:_password=${accessToken}
+//${server}/${organization}/_packaging/${feed}/npm/registry/:email=${email}
+//${server}/${organization}/_packaging/${feed}/npm/:username=${username}
+//${server}/${organization}/_packaging/${feed}/npm/:_password=${accessToken}
+//${server}/${organization}/_packaging/${feed}/npm/:email=${email}
 ; end auth token  
 `;
 

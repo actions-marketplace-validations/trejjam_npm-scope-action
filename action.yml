@@ -10,6 +10,10 @@ inputs:
   organization:
     description: "Scope name / organization"
     required: true
+  server:
+    description: "Server"
+    required: false
+    default: pkgs.dev.azure.com
   feed:
     description: "Scope feed"
     required: true
