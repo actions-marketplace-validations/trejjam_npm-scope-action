@@ -122,6 +122,8 @@ async function run() {
     }
 }
 
+run();
+
 /* harmony default export */ __webpack_exports__["default"] = (run);
 
 

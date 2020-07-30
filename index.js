@@ -57,4 +57,6 @@ async function run() {
     }
 }
 
+run();
+
 export default run;
