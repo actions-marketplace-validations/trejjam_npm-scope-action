@@ -2,6 +2,8 @@
 
 Github Action to set scope in a .npmrc file
 
+![.github/workflows/main.yml](https://github.com/trejjam/npm-scope-action/workflows/.github/workflows/main.yml/badge.svg)
+
 ## Inputs
 
 ### `accessToken` **required**
