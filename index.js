@@ -12,7 +12,7 @@ async function run() {
         let username = core.getInput('username');
         let email = core.getInput('email');
 
-        const filePath = process.env.NPMRC_PATH;
+        const filePath = core.getInput('npmrcPath');
 
         if (username === undefined || username === '') {
             username = organization;

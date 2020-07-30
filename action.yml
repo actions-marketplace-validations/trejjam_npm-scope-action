@@ -17,8 +17,10 @@ inputs:
     description: "Your email"
     required: false
     default: "npm requires email to be set but doesn't use the value"
+  npmrcPath:
+    description: "Path for the .npmrc file"
+    required: false
+    default: $HOME/.npmrc
 runs:
   using: "node12"
   main: "dist/index.js"
-  env:
-    NPMRC_PATH: "$HOME/.npmrc"
