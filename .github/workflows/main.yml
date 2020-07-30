@@ -17,11 +17,3 @@ jobs:
       # Use the output from the `hello` step
       - name: Print the .npmrc file
         run: cat $HOME/.npmrc
-      - uses: pCYSl5EDgo/cat@master
-        id: cat
-        with:
-          path: $HOME/.npmrc
-
-      - run: echo $TEXT
-        env:
-          TEXT: ${{ steps.hello.outputs.text }}
