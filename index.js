@@ -12,12 +12,10 @@ async function run() {
         let username = core.getInput('username');
         let email = core.getInput('email');
 
+        const filePath = process.env.NPMRC_PATH;
+
         if (username === undefined || username === '') {
             username = organization;
-        }
-
-        if (email === undefined || email === '') {
-            email = 'npm requires email to be set but doesn\'t use the value';
         }
 
         const authTokenConfiguration = `
@@ -30,8 +28,6 @@ async function run() {
 //pkgs.dev.azure.com/${organization}/_packaging/${feed}/npm/:email=${email}
 ; end auth token  
 `;
-
-        const filePath = '.npmrc';
 
         // TODO append to a file if exists
         fs.writeFile(filePath, authTokenConfiguration, error => {

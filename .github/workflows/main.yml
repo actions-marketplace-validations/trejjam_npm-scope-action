@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  npm_scope_job:
+    runs-on: ubuntu-latest
+    name: Github Action to set scope in a .npmrc file
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure NPM scope
+        id: npm-scope-action
+        uses: ./ # Use self
+        with:
+          accessToken: 'token'
+          organization: 'organization'
+          feed: 'feed'
+      # Use the output from the `hello` step
+      - name: Print the .npmrc file
+        run: cat $NPMRC_PATH
