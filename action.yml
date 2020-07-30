@@ -20,7 +20,6 @@ inputs:
   npmrcPath:
     description: "Path for the .npmrc file"
     required: false
-    default: $HOME/.npmrc
 runs:
   using: "node12"
   main: "dist/index.js"

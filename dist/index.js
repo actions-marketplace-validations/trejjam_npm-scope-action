@@ -75,11 +75,17 @@ async function run() {
         const feed = core.getInput('feed');
         core.setSecret(feed);
         let username = core.getInput('username');
-        let email = core.getInput('email');
+        const email = core.getInput('email');
 
-        const filePath = core.getInput('npmrcPath');
+        let filePath = core.getInput('npmrcPath');
 
-        core.info(`Write to: ${filePath}`);
+        if (username === undefined || username === '') {
+            username = organization;
+        }
+        if (filePath === undefined || filePath === '') {
+            filePath = `${process.env.HOME}/.npmrc`;
+        }
+
         if (core.isDebug()) {
             core.debug(`AccessToken: ${accessToken}`);
         }
@@ -90,9 +96,8 @@ async function run() {
         core.info(`Username: ${username}`);
         core.info(`Email: ${email}`);
 
-        if (username === undefined || username === '') {
-            username = organization;
-        }
+        core.info(`Write to: ${filePath}`);
+
 
         const authTokenConfiguration = `
 ; begin auth token
