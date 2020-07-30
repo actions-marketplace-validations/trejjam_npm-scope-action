@@ -33,7 +33,6 @@ async function run() {
 
         core.info(`Write to: ${filePath}`);
 
-
         const authTokenConfiguration = `
 ; begin auth token
 //pkgs.dev.azure.com/${organization}/_packaging/${feed}/npm/registry/:username=${username}
@@ -45,17 +44,26 @@ async function run() {
 ; end auth token  
 `;
 
-        // TODO append to a file if exists
-        fs.writeFile(filePath, authTokenConfiguration, error => {
+        fs.open(filePath, 'a', (error, fd) => {
             if (error) {
                 core.setFailed(error.message);
+
+                return;
             }
 
-            core.info('.npmrc configured');
-            if (core.isDebug()) {
-                core.debug(`.nmprc content: ${authTokenConfiguration}`);
-            }
-        })
+            fs.appendFile(fd, authTokenConfiguration, error => {
+                if (error) {
+                    core.setFailed(error.message);
+
+                    return;
+                }
+
+                core.info('.npmrc configured');
+                if (core.isDebug()) {
+                    core.debug(`.nmprc content: ${authTokenConfiguration}`);
+                }
+            });
+        });
 
     } catch (error) {
         core.setFailed(error.message);
